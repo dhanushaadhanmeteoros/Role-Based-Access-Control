@@ -1,141 +1,60 @@
-# IoT Device Management with JWT Authentication & Role-Based Access Control (RBAC)
+# METEOROS IoT — Device Management (RBAC)
 
-A full-stack web application for managing IoT devices with secure authentication and role-based authorization.
+A device management dashboard for IoT infrastructure, with two roles: Admins can add/edit/delete devices, Operators can only view them. Access control is enforced on both the frontend and the backend, so it's not something you can bypass by editing the client.
 
-This project is being developed as part of a React and Node.js learning assignment focused on implementing JWT authentication, protected routes, and role-based access control (RBAC).
+Built with React + Vite on the frontend, Express on the backend, and json-server as a lightweight mock database for devices.
 
-> **Project Status:** Under Development
+## Scope note
 
----
+The original task brief specified local, in-browser device data with no backend or external API. Per an updated project scope from the project lead, this was changed: authentication and device data are both handled through a backend rather than local state or localStorage. Auth runs through the Express server (`server/`), and device records are served via json-server (`server/mock-api/`) instead of being stored client-side. RBAC enforcement itself follows the original brief closely — it's implemented on both the frontend (UI permissions) and the backend (API-level authorization), which is stricter than the original brief required.
 
-## Overview
+## Stack
 
-The goal of this project is to build a secure IoT Device Management application where users can log in using JWT authentication and access features based on their assigned role.
+- **Frontend:** React 19, Vite, React Router, Tailwind CSS, Axios, Recharts
+- **Auth server:** Express, JWT, bcrypt, express-rate-limit
+- **Device API:** json-server (mock REST API backed by a JSON file)
 
-The frontend is built with React and Tailwind CSS, while the backend uses Express.js to provide authentication services.
+## Project structure
 
----
-
-## Tech Stack
-
-### Frontend
-
-- React (Vite)
-- Tailwind CSS
-- React Router
-- Axios
-
-### Backend
-
-- Node.js
-- Express.js
-- JSON Web Token (JWT)
-- CORS
-- Dotenv
-
----
-
-## Project Structure
-
-```text
 RBAC/
-├── client/        # React frontend
-└── server/        # Express authentication server
-```
+├── client/                  # React app
+│   └── src/
+│       ├── components/      # Shared UI (forms, tables, modals, toasts...)
+│       ├── context/         # AuthContext, ToastContext
+│       ├── hooks/           # useDevices
+│       ├── pages/           # Dashboard, Devices, DeviceDetail, Alerts, Login, 403
+│       └── utils/           # api client, permissions, token helpers
+└── server/
+    ├── routes/auth.js       # Login endpoint
+    ├── middleware/auth.js   # JWT verification
+    ├── data/users.js        # Demo user accounts (bcrypt-hashed passwords)
+    └── mock-api/            # json-server instance for /devices, with role-based write protection
 
----
+## Running it locally
 
-## Planned Features
+From the repo root:
 
-### Authentication
+npm install
+npm install --prefix client
+npm install --prefix server
+npm run dev
 
-- JWT-based Login
-- Protected Routes
-- User Logout
-- Token Verification
-- Role-based Authentication
+That last command starts all three pieces together (auth server on :5000, mock device API on :3001, Vite dev server on :5173) via concurrently. Open http://localhost:5173.
 
-### Role-Based Access Control
 
-#### Admin
+## Demo logins
 
-- View Devices
-- Add Devices
-- Edit Devices
-- Delete Devices
+| Role     | Username             | Password      |
+|----------|-----------------------|---------------|
+| Admin    | admin@gmail.com       | admin123      |
+| Operator | operator@gmail.com    | operator123   |
 
-#### Operator
+## Roles
 
-- View Devices Only
+**Admin** — view, add, edit, delete devices.
+**Operator** — view only. Write attempts are blocked at the API level (403), not just hidden in the UI.
 
----
 
-## Device Management
+## Known limitations
 
-Each device will include:
-
-- Device ID
-- Device Name
-- Device Type
-- Status (Online / Offline)
-- Location
-- Created Timestamp
-- Updated Timestamp
-
----
-
-## Additional Features
-
-- Search Devices
-- Filter by Status
-- Filter by Device Type
-- Sorting
-- Dashboard Statistics
-- Form Validation
-- Duplicate Device ID Prevention
-- Local Storage Persistence
-- Responsive UI
-
----
-
-## Development Progress
-
-### Completed
-
-- Project planning
-- Initial project structure
-- Frontend and backend setup
-
-### Currently Working On
-
-- JWT Authentication
-- Login API
-- Protected Routes
-
-### Upcoming
-
-- Role-Based Access Control
-- Device Management
-- Dashboard
-- Search & Filtering
-- Local Storage Integration
-
----
-
-## Learning Objectives
-
-This project focuses on understanding:
-
-- React Component Architecture
-- JWT Authentication
-- Protected Routes
-- Role-Based Access Control
-- State Management
-- REST API Communication
-- Clean Project Structure
-
----
-
-## Notes
-
-This repository is actively being developed. Features and documentation will continue to evolve as development progresses.
+- No refresh-token flow — JWTs expire after 1 hour and require a full re-login. The interceptor in utils/api.js catches the next failed request and redirects to login; there's no background timer that logs the user out at the exact expiry moment.

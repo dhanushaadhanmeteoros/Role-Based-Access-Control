@@ -1,0 +1,103 @@
+{
+  "devices": [
+    {
+      "name": "Temperature Sensor A1",
+      "type": "Temperature Sensor",
+      "status": "Offline",
+      "location": "Factory Floor A",
+      "createdAt": "2026-07-16T05:01:12.628Z",
+      "updatedAt": "2026-07-16T09:05:51.655Z",
+      "id": "DEV-1001"
+    },
+    {
+      "name": "Smart Water Meter",
+      "type": "Smart Lock",
+      "status": "Online",
+      "location": "Basement Utility Room",
+      "id": "DEV-1002",
+      "createdAt": "2026-07-16T04:05:07.528Z",
+      "updatedAt": "2026-07-16T04:05:07.528Z"
+    },
+    {
+      "name": "Smart Energy Meter 01",
+      "type": "Energy Meter",
+      "status": "Offline",
+      "location": "Main Electrical Room",
+      "id": "DEV-1003",
+      "createdAt": "2026-07-15T11:24:38.911Z",
+      "updatedAt": "2026-07-15T11:24:38.911Z"
+    },
+    {
+      "name": "Air Quality Monitor",
+      "type": "Air Quality Sensor",
+      "status": "Online",
+      "location": "Office Block 1",
+      "id": "DEV-1004",
+      "createdAt": "2026-07-15T11:25:42.714Z",
+      "updatedAt": "2026-07-15T11:25:42.714Z"
+    },
+    {
+      "name": "Motion Detector East",
+      "type": "Motion Sensor",
+      "status": "Online",
+      "location": "East Entrance",
+      "id": "DEV-1005",
+      "createdAt": "2026-07-15T11:27:17.839Z",
+      "updatedAt": "2026-07-15T11:27:17.839Z"
+    },
+    {
+      "name": "Smart Door Lock",
+      "type": "Smart Lock",
+      "status": "Online",
+      "location": "Server Room",
+      "id": "DEV-1006",
+      "createdAt": "2026-07-15T11:27:47.544Z",
+      "updatedAt": "2026-07-15T11:27:47.544Z"
+    },
+    {
+      "name": "Smoke Detector C3",
+      "type": "Air Quality Sensor",
+      "status": "Online",
+      "location": "Storage Area",
+      "id": "DEV-1007",
+      "createdAt": "2026-07-15T11:28:23.750Z",
+      "updatedAt": "2026-07-15T11:28:23.750Z"
+    },
+    {
+      "name": "Vibration Sensor M1",
+      "type": "Motion Sensor",
+      "status": "Offline",
+      "location": "Production Machine 1",
+      "id": "DEV-1008",
+      "createdAt": "2026-07-15T11:31:34.287Z",
+      "updatedAt": "2026-07-15T11:31:34.287Z"
+    },
+    {
+      "name": "Pressure Sensor P2",
+      "type": "Air Quality Sensor",
+      "status": "Online",
+      "location": "Hydraulic Unit",
+      "id": "DEV-1009",
+      "createdAt": "2026-07-15T11:32:07.479Z",
+      "updatedAt": "2026-07-15T11:32:07.479Z"
+    },
+    {
+      "name": "Server Rack Humidity Monitor",
+      "type": "Humidity Sensor",
+      "status": "Online",
+      "location": "Data Center Rack 4",
+      "id": "DEV-1010",
+      "createdAt": "2026-07-16T04:59:59.859Z",
+      "updatedAt": "2026-07-16T04:59:59.859Z"
+    },
+    {
+      "name": "Main Gate Security Camera",
+      "type": "Security Camera",
+      "status": "Online",
+      "location": "Main Entrance Gate",
+      "createdAt": "2026-07-16T05:00:18.446Z",
+      "updatedAt": "2026-07-16T05:18:39.749Z",
+      "id": "DEV-1011"
+    }
+  ]
+}

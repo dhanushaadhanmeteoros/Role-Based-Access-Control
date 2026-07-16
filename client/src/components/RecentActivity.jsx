@@ -1,6 +1,5 @@
-// MOCK DATA — there's no activity/event-log system in this project yet.
-// This is static placeholder content matching the UI design, not real system events.
-// Replace with a real activity feed once an events API/data model exists.
+// MOCK DATA
+
 const mockActivity = [
   { id: 1, title: 'Firmware Update Complete', description: 'NX-GW-001 (v2.4.1)', time: '2 mins ago', color: '#6B8F5A' },
   { id: 2, title: 'New Node Joined', description: 'NX-SENS-889 registered to Zone A', time: '15 mins ago', color: '#6B8F5A' },

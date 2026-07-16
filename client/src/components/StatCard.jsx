@@ -1,4 +1,3 @@
-// client/src/components/StatCard.jsx
 function StatCard({ label, value, accentColor }) {
   return (
     <div className="bg-surface-container rounded-xl border border-outline-variant p-5 flex-1 min-w-40">

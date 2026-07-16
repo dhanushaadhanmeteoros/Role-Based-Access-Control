@@ -46,7 +46,7 @@
   --color-on-background: #2A2521;
   --color-surface-variant: #E9E0D2;
 
-  /* Typography — serif display + clean sans body + mono for technical data */
+
   --font-sans: 'Public Sans', sans-serif;
   --font-serif: 'Fraunces', serif;
   --font-mono: 'JetBrains Mono', monospace;
@@ -57,4 +57,15 @@
   --radius-md: 0.5rem;
   --radius-lg: 0.75rem;
   --radius-xl: 1rem;
+}
+
+/* Override the browser's native autofill background (Light green) */
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px #F1EAE0 inset !important;
+  -webkit-text-fill-color: #2A2521 !important;
+  caret-color: #2A2521 !important;
+  transition: background-color 5000s ease-in-out 0s;
 }

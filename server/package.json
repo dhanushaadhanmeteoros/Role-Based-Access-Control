@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-  "start": "node server.js",
-  "dev": "nodemon server.js"
-},
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "mock-api": "node mock-api/server.js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -15,7 +16,10 @@
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
-    "jsonwebtoken": "^9.0.3"
+    "json-server": "^0.17.4",
+    "jsonwebtoken": "^9.0.3",
+    "bcryptjs": "^2.4.3",
+    "express-rate-limit": "^7.x"
   },
   "devDependencies": {
     "nodemon": "^3.1.14"

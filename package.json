@@ -1,0 +1,11 @@
+{
+  "name": "rbac-root",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "concurrently -n \"API,MOCK,CLIENT\" -c \"cyan,yellow,green\" \"npm run dev --prefix server\" \"npm run mock-api --prefix server\" \"npm run dev --prefix client\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}

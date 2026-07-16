@@ -3,7 +3,7 @@ import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
 import { useDevices } from '../hooks/useDevices';
 import AppShell from '../components/layout/AppShell';
-import RoleBadge from '../components/RoleBadge';
+import PageHeader from '../components/layout/PageHeader';
 import StatCard from '../components/StatCard.jsx';
 import DeviceTypesChart from '../components/DeviceTypesChart';
 import ThroughputChart from '../components/ThroughputChart';
@@ -35,15 +35,7 @@ function Dashboard() {
 
     return (
         <AppShell onAddDevice={() => setIsModalOpen(true)} role={user?.role}>
-            <div className="flex items-center justify-between mb-1">
-                <p className="font-mono text-xs tracking-wider text-on-surface-variant uppercase">
-                    System &gt; Overview
-                </p>
-                <RoleBadge role={user?.role} email={user?.username} />
-            </div>
-            <h1 className="text-[32px] leading-10 font-serif font-semibold tracking-tight text-on-surface mb-6">
-                Dashboard
-            </h1>
+            <PageHeader breadcrumb="System > Overview" title="Dashboard" />
 
             {fetchError && (
                 <div className="bg-error-container text-error text-sm rounded-md px-4 py-2 mb-4">

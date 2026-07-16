@@ -23,7 +23,7 @@ function AppShell({ children, onAddDevice, role }) {
           >
             ☰
           </button>
-          <h1 className="font-sans font-semibold text-primary">Nexus IoT</h1>
+          <h1 className="font-sans font-semibold text-primary">METEOROS IOT</h1>
           {onAddDevice ? (
             <button onClick={onAddDevice} className="text-on-surface p-1" aria-label="Add device">
               +

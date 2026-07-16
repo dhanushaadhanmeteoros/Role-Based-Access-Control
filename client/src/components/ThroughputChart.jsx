@@ -3,9 +3,8 @@ import { BarChart, Bar, XAxis, ResponsiveContainer, Cell } from 'recharts';
 
 const RANGES = ['1H', '24H', '7D'];
 
-// MOCK DATA — there's no real telemetry/throughput API in this project yet.
-// Generated once per range and cached (see cacheRef below) so switching
-// between ranges doesn't re-randomize values you've already seen.
+// MOCK DATA 
+
 function generateMockData(range) {
     const config = {
         '1H': { points: 12, labelFn: (i) => `${i * 5}m` },

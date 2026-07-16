@@ -1,4 +1,3 @@
-// client/src/components/Button.jsx
 function Button({ children, variant = 'primary', className = '', ...props }) {
   const variants = {
     primary: 'bg-primary-container hover:bg-primary-container/90 text-on-primary-container',

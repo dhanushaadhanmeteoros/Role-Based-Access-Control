@@ -7,6 +7,7 @@ const navItems = [
     label: 'Dashboard',
     path: '/dashboard',
     enabled: true,
+    adminOnly: true,
     icon: (
       <>
         <rect x="3" y="3" width="7" height="9" rx="1" />
@@ -46,10 +47,11 @@ const navItems = [
       </>
     ),
   },
-  {
+/*   {
     label: 'Analytics',
     path: '#',
     enabled: false,
+    adminOnly: true,
     icon: (
       <>
         <line x1="4" y1="20" x2="20" y2="20" />
@@ -63,13 +65,14 @@ const navItems = [
     label: 'Users',
     path: '#',
     enabled: false,
+    adminOnly: true,
     icon: (
       <>
         <circle cx="12" cy="8" r="4" />
         <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" />
       </>
     ),
-  },
+  }, */
 ];
 
 function NavIcon({ children }) {
@@ -119,19 +122,13 @@ function Sidebar({ onAddDevice, role, mobileOpen, onMobileClose }) {
         <div className="px-6 py-5 border-b border-outline-variant">
           <div className="flex items-center gap-2">
             <span className="flex items-center justify-center w-6 h-6 rounded-sm border border-primary text-primary font-mono text-[11px] font-semibold shrink-0">
-              N
+              M
             </span>
-            <h1 className="font-serif text-lg font-semibold text-on-surface leading-none">Nexus IoT</h1>
+            <h1 className="font-serif text-lg font-semibold text-on-surface leading-none">METEOROS IOT</h1>
           </div>
           <p className="font-mono text-[10px] tracking-wider text-on-surface-variant mt-2">
             ENTERPRISE CONTROL
           </p>
-{/*           <div className="flex items-center gap-1.5 mt-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-tertiary" />
-            <p className="font-mono text-[10px] tracking-wider text-on-surface-variant/70">
-              ALL SYSTEMS NOMINAL
-            </p>
-          </div> */}
         </div>
 
         <nav className="flex-1 px-3 py-4">
@@ -139,32 +136,34 @@ function Sidebar({ onAddDevice, role, mobileOpen, onMobileClose }) {
             Modules
           </p>
           <div className="space-y-0.5">
-            {navItems.map((item) =>
-              item.enabled ? (
-                <NavLink
-                  key={item.label}
-                  to={item.path}
-                  onClick={onMobileClose}
-                  className={({ isActive }) =>
-                    `flex items-center gap-2.5 pl-2.5 pr-3 py-2 border-l-2 text-sm font-medium transition-colors ${isActive
-                      ? 'border-primary bg-surface-container-high text-on-surface'
-                      : 'border-transparent text-on-surface-variant hover:bg-surface-container hover:text-on-surface'
-                    }`
-                  }
-                >
-                  <NavIcon>{item.icon}</NavIcon>
-                  {item.label}
-                </NavLink>
-              ) : (
-                <span
-                  key={item.label}
-                  className="flex items-center gap-2.5 pl-2.5 pr-3 py-2 border-l-2 border-transparent text-sm font-medium text-on-surface-variant/40 cursor-not-allowed"
-                >
-                  <NavIcon>{item.icon}</NavIcon>
-                  {item.label}
-                </span>
-              )
-            )}
+            {navItems
+              .filter((item) => !item.adminOnly || role === 'Admin')
+              .map((item) =>
+                item.enabled ? (
+                  <NavLink
+                    key={item.label}
+                    to={item.path}
+                    onClick={onMobileClose}
+                    className={({ isActive }) =>
+                      `flex items-center gap-2.5 pl-2.5 pr-3 py-2 border-l-2 text-sm font-medium transition-colors ${isActive
+                        ? 'border-primary bg-surface-container-high text-on-surface'
+                        : 'border-transparent text-on-surface-variant hover:bg-surface-container hover:text-on-surface'
+                      }`
+                    }
+                  >
+                    <NavIcon>{item.icon}</NavIcon>
+                    {item.label}
+                  </NavLink>
+                ) : (
+                  <span
+                    key={item.label}
+                    className="flex items-center gap-2.5 pl-2.5 pr-3 py-2 border-l-2 border-transparent text-sm font-medium text-on-surface-variant/40 cursor-not-allowed"
+                  >
+                    <NavIcon>{item.icon}</NavIcon>
+                    {item.label}
+                  </span>
+                )
+              )}
           </div>
         </nav>
 
